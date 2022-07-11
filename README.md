@@ -1,4 +1,4 @@
 # todo-list-project
 
 Simple Django TODO-list project. Check dev branch to see.
-![homepage](https://user-images.githubusercontent.com/66175827/178269707-03cb0e7d-77ba-4add-9bc3-15a816f8c7b3.PNG)
+![homepage (3)](https://user-images.githubusercontent.com/66175827/178269984-72ed999b-99eb-43b2-8151-8ed195fe82e6.PNG)
