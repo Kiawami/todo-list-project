@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>TODO list</h1>
+    {% if task_list %}
+        <table>
+            {% for task in task_list %}
+                <tr>
+                    <td>
+                        <b>{{ task.content }}</b>
+                        {% if task.is_done %}
+                            <b style="color: green">Done</b>
+                            {% else %}
+                            <b style="color: red">Not done</b>
+                        {% endif %}
+                        <br> Created: {{ task.datetime }}
+                        {% if task.deadline %}
+                            Deadline: {{ task.deadline }}
+                        {% endif %}
+                        <br> <div style="color: grey"> Tags:
+                        {% for tag in task.tags.all %}
+                            {{ tag.name }}
+                            {% empty %}
+                                None
+                        {% endfor %}
+                        <input type="button" value="Update">
+                        <input type="button" value="Delete">
+                        </div>
+
+                    </td>
+                    <td>
+                        {% if task.is_done %}
+                            <input type="button" value="Undo">
+                            {% else %}
+                                <input type="button" value="Complete">
+                        {% endif %}
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+        </table>
+    {% endif %} 
+{% endblock %}

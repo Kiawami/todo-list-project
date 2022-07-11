@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Tags</title>
+{% endblock %}
+
+{% block content %}
+        <h1>Tags</h1>
+        {% if tag_list %}
+            <table>
+                <tr>
+                    <td><b>Name</b></td>
+                    <td><b>Update</b></td>
+                    <td><b>Delete</b></td>
+                </tr>
+                {% for tag in tag_list %}
+                    <tr>
+                        <td>{{ tag.name }}</td>
+                        <td><input type="button" , value="Update"></td>
+                        <td><input type="button" , value="Delete"></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+{% endblock %}
