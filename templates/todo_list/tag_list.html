@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block content %}
-        <h1>Tags</h1>
+    <p>
+        <h1>Tags <a href="{% url "todo_list:tag-create" %}" class = "btn btn-primary" style="float: right">Create tag</a></h1>
+    </p>
         {% if tag_list %}
-            <table>
+            <table class="table">
                 <tr>
                     <td><b>Name</b></td>
                     <td><b>Update</b></td>
@@ -16,8 +18,8 @@
                 {% for tag in tag_list %}
                     <tr>
                         <td>{{ tag.name }}</td>
-                        <td><input type="button" , value="Update"></td>
-                        <td><input type="button" , value="Delete"></td>
+                        <td><a href="{% url "todo_list:tag-update" pk=tag.id %}" class = "btn btn-secondary">Update</a></td>
+                        <td><a href="{% url "todo_list:tag-delete" pk=tag.id %}" class = "btn btn-secondary">Delete</a></td>
                     </tr>
                 {% endfor %}
             </table>

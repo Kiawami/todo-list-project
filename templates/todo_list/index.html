@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>TODO list</h1>
+    <p>
+    <h1>TODO list <a href="{% url "todo_list:task-create" %}" class = "btn btn-primary" style="float: right">Create task</a></h1>
+    </p>
+
     {% if task_list %}
-        <table>
+        <table class="table">
             {% for task in task_list %}
                 <tr>
                     <td>
@@ -13,26 +16,31 @@
                             {% else %}
                             <b style="color: red">Not done</b>
                         {% endif %}
-                        <br> Created: {{ task.datetime }}
+                        <br>
+                            <small>
+                                Created: {{ task.datetime }}
+                            </small>
                         {% if task.deadline %}
-                            Deadline: {{ task.deadline }}
+                            <small>
+                                Deadline: {{ task.deadline }}
+                            </small>
                         {% endif %}
                         <br> <div style="color: grey"> Tags:
                         {% for tag in task.tags.all %}
                             {{ tag.name }}
                             {% empty %}
-                                None
+                                none
                         {% endfor %}
-                        <input type="button" value="Update">
-                        <input type="button" value="Delete">
+                        <a href="{% url "todo_list:task-update" pk=task.id %}"  >Update</a>
+                        <a href="{% url "todo_list:task-delete" pk=task.id %}"  >Delete</a>
                         </div>
 
                     </td>
                     <td>
                         {% if task.is_done %}
-                            <input type="button" value="Undo">
+                            <a href="{% url "todo_list:change-status" pk=task.id %}" class = "btn btn-secondary" >Undo</a>
                             {% else %}
-                                <input type="button" value="Complete">
+                                <a href="{% url "todo_list:change-status" pk=task.id %}" class = "btn btn-success" >Complete</a>
                         {% endif %}
                     </td>
 

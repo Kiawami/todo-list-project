@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>
+        <h2>
+            Are you sure you want to delete tag "{{ tag.name }}" ?
+        </h2>
+    </p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Yes, delete" class="btn btn-danger">
+    </form>
+{% endblock %}
